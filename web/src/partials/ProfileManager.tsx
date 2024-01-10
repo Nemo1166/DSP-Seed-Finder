@@ -20,39 +20,39 @@ const ProfileManager: Component<{
 
     return (
         <div class={styles.top}>
-            Profile:
+            配置:
             <Button onClick={props.onLoad} disabled={props.disabled}>
-                Load
+                加载
             </Button>
             <Button
                 onClick={props.onSave}
                 disabled={props.disabled || !props.isValid}
             >
-                Save
+                保存
             </Button>
             <Show when={props.isLoaded}>
                 <Button
                     onClick={() => setNewModal(true)}
                     disabled={props.disabled}
                 >
-                    New
+                    新建
                 </Button>
                 <Button onClick={props.onClone} disabled={props.disabled}>
-                    Clone
+                    复制
                 </Button>
                 <Button
                     theme="error"
                     onClick={() => setClearModal(true)}
                     disabled={props.disabled}
                 >
-                    Clear
+                    清除搜索结果
                 </Button>
                 <Button
                     theme="error"
                     onClick={() => setDeleteModal(true)}
                     disabled={props.disabled}
                 >
-                    Delete
+                    删除
                 </Button>
             </Show>
             <Modal

@@ -136,21 +136,21 @@ const StarDetail: Component<{
 }> = (props) => (
     <>
         <div class={styles.row}>
-            <div class={styles.field}>Type</div>
+            <div class={styles.field}>类型</div>
             <div class={styles.value}>{getStarType(props.star)}</div>
         </div>
         <div class={styles.row}>
-            <div class={styles.field}>Spectral Class</div>
+            <div class={styles.field}>光谱级别</div>
             <div class={styles.value}>{props.star.spectr}</div>
         </div>
         <div class={styles.row}>
-            <div class={styles.field}>Luminosity</div>
+            <div class={styles.field}>亮度</div>
             <div class={styles.value}>
                 {formatNumber(props.star.luminosity, 3)} L
             </div>
         </div>
         <div class={styles.row}>
-            <div class={styles.field}>Distance from Start</div>
+            <div class={styles.field}>与初始星系距离</div>
             <div class={styles.value}>
                 {formatNumber(distanceFromBirth(props.star.position), 1)} ly
             </div>
@@ -158,8 +158,7 @@ const StarDetail: Component<{
         <Show when={props.positions}>
             <div class={styles.row}>
                 <div class={styles.field}>
-                    Distance from nearest{" "}
-                    <Tooltip text="Black Hole / Neutron Star">X star</Tooltip>
+                    与最近的 <Tooltip text="黑洞/中子星">X star</Tooltip> 的距离
                 </div>
                 <div class={styles.value}>
                     {formatNumber(
@@ -176,8 +175,7 @@ const StarDetail: Component<{
         <Show when={props.positions}>
             <div class={styles.row}>
                 <div class={styles.field}>
-                    Distance from furthest{" "}
-                    <Tooltip text="Black Hole / Neutron Star">X star</Tooltip>
+                    与最远的 <Tooltip text="黑洞/中子星">X star</Tooltip> 的距离
                 </div>
                 <div class={styles.value}>
                     {formatNumber(
@@ -192,32 +190,32 @@ const StarDetail: Component<{
             </div>
         </Show>
         <div class={styles.row}>
-            <div class={styles.field}>Max Dyson Sphere Radius</div>
+            <div class={styles.field}>最大戴森壳半径</div>
             <div class={styles.value}>
                 {toPrecision(props.star.dysonRadius, 0)} m
             </div>
         </div>
         <Show when={props.expand}>
             <div class={styles.row}>
-                <div class={styles.field}>Radius</div>
+                <div class={styles.field}>半径</div>
                 <div class={styles.value}>
                     {toPrecision(props.star.radius * 1600, 0)} m
                 </div>
             </div>
             <div class={styles.row}>
-                <div class={styles.field}>Mass</div>
+                <div class={styles.field}>质量</div>
                 <div class={styles.value}>
                     {formatNumber(props.star.mass, 3)} M
                 </div>
             </div>
             <div class={styles.row}>
-                <div class={styles.field}>Temperature</div>
+                <div class={styles.field}>温度</div>
                 <div class={styles.value}>
                     {toPrecision(props.star.temperature, 0)} K
                 </div>
             </div>
             <div class={styles.row}>
-                <div class={styles.field}>Age</div>
+                <div class={styles.field}>年龄</div>
                 <div class={styles.value}>
                     {toPrecision(props.star.age * props.star.lifetime, 0)} Myrs
                 </div>
@@ -254,14 +252,14 @@ const StarVeins: Component<{ star: Star }> = (props) => (
         </For>
         <Show when={hasWater(props.star)}>
             <div class={styles.row}>
-                <div class={styles.field}>Water</div>
-                <div class={styles.value}>Ocean</div>
+                <div class={styles.field}>水</div>
+                <div class={styles.value}>海洋</div>
             </div>
         </Show>
         <Show when={hasSulfur(props.star)}>
             <div class={styles.row}>
-                <div class={styles.field}>Sulfuric Acid</div>
-                <div class={styles.value}>Ocean</div>
+                <div class={styles.field}>硫酸</div>
+                <div class={styles.value}>海洋</div>
             </div>
         </Show>
         <For each={combineGases(props.star)}>
@@ -312,19 +310,19 @@ const PlanetView: Component<{ star: Star; planet: Planet }> = (props) => {
             </div>
             <Show when={isGas()}>
                 <div class={styles.row}>
-                    <div class={styles.field}>Type</div>
+                    <div class={styles.field}>类型</div>
                     <div class={styles.value}>
                         {props.planet.gases.find(
                             ([g]) => g === GasType.Deuterium,
                         )
-                            ? "Gas Giant"
-                            : "Ice Giant"}
+                            ? "气态巨星"
+                            : "冰巨星"}
                     </div>
                 </div>
             </Show>
             <Show when={!isGas()}>
                 <Show when={props.planet.orbitAround != null}>
-                    <div class={styles.row}>Satellite</div>
+                    <div class={styles.planetNote}>卫星</div>
                 </Show>
                 <Show
                     when={
@@ -332,7 +330,7 @@ const PlanetView: Component<{ star: Star; planet: Planet }> = (props) => {
                         props.planet.rotationPeriod
                     }
                 >
-                    <div class={styles.row}>Tidal locking</div>
+                    <div class={styles.planetNote}>潮汐锁定</div>
                 </Show>
                 <Show
                     when={
@@ -340,7 +338,7 @@ const PlanetView: Component<{ star: Star; planet: Planet }> = (props) => {
                         props.planet.rotationPeriod
                     }
                 >
-                    <div class={styles.row}>Orbital Resonance 1 : 2</div>
+                    <div class={styles.planetNote}>轨道共振 1 : 2</div>
                 </Show>
                 <Show
                     when={
@@ -348,25 +346,25 @@ const PlanetView: Component<{ star: Star; planet: Planet }> = (props) => {
                         props.planet.rotationPeriod
                     }
                 >
-                    <div class={styles.row}>Orbital Resonance 1 : 4</div>
+                    <div class={styles.planetNote}>轨道共振 1 : 4</div>
                 </Show>
                 <Show when={Math.abs(props.planet.obliquity) > 70}>
-                    <div class={styles.row}>Horizontal Rotation</div>
+                    <div class={styles.planetNote}>横躺自转</div>
                 </Show>
                 <div class={styles.row}>
-                    <div class={styles.field}>Wind Power</div>
+                    <div class={styles.field}>风能利用率</div>
                     <div class={styles.value}>
                         {toPrecision(props.planet.theme.wind * 100, 0)}%
                     </div>
                 </div>
                 <div class={styles.row}>
-                    <div class={styles.field}>Solar Power</div>
+                    <div class={styles.field}>光能利用率</div>
                     <div class={styles.value}>
                         {toPrecision(props.planet.luminosity * 100, 0)}%
                     </div>
                 </div>
                 <div class={styles.row}>
-                    <div class={styles.field}>Type</div>
+                    <div class={styles.field}>类型</div>
                     <div class={styles.value}>
                         {planetTypes[props.planet.theme.id] ||
                             props.planet.theme.id}
@@ -385,14 +383,14 @@ const PlanetView: Component<{ star: Star; planet: Planet }> = (props) => {
             </For>
             <Show when={props.planet.theme.waterItemId === OceanType.Water}>
                 <div class={styles.row}>
-                    <div class={styles.field}>Water</div>
-                    <div class={styles.value}>Ocean</div>
+                    <div class={styles.field}>水</div>
+                    <div class={styles.value}>海洋</div>
                 </div>
             </Show>
             <Show when={props.planet.theme.waterItemId === OceanType.Sulfur}>
                 <div class={styles.row}>
-                    <div class={styles.field}>Sulfuric Acid</div>
-                    <div class={styles.value}>Ocean</div>
+                    <div class={styles.field}>硫酸</div>
+                    <div class={styles.value}>海洋</div>
                 </div>
             </Show>
             <For each={planetGases(props.planet)}>
@@ -454,7 +452,7 @@ const StarView: Component<{
                     </div>
                     <div class={styles.card}>
                         <div class={styles.title}>
-                            <span>Resources</span>
+                            <span>资源</span>
                         </div>
                         <StarVeins star={props.star} />
                     </div>
@@ -463,7 +461,7 @@ const StarView: Component<{
                     <div class={styles.column}>
                         <div class={styles.card}>
                             <div class={styles.title}>
-                                <span>Nearby Stars</span>
+                                <span>附近星系</span>
                             </div>
                             <For
                                 each={nearbyStars(
@@ -488,7 +486,7 @@ const StarView: Component<{
             <div class={styles.column}>
                 <div class={clsx(styles.card, styles.planets)}>
                     <div class={styles.title}>
-                        <span>Planets</span>
+                        <span>行星</span>
                     </div>
                     <For each={props.star.planets}>
                         {(planet) => (

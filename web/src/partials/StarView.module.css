@@ -117,3 +117,14 @@
     font-size: 20px;
     margin-bottom: 8px;
 }
+
+.planetNote {
+    font-weight: bold;
+    font-size: 16px;
+    color: #fdb;
+    text-shadow:
+        1px 1px 3px rgb(255 128 0 / 80%),
+        -1px -1px 3px rgb(255 128 0 / 80%),
+        1px -1px 3px rgb(255 128 0 / 80%),
+        -1px 1px 3px rgb(255 128 0 / 80%);
+}

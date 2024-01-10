@@ -18,13 +18,13 @@ const Header: Component = () => {
                 )}
             >
                 <A href="/find-star" class={styles.button}>
-                    Star Finder
+                    恒星查找器
                 </A>
                 <A href="/find-galaxy" class={styles.button}>
-                    Galaxy Finder
+                    星区查找器
                 </A>
                 <A href="/galaxy" class={styles.button}>
-                    Galaxy Viewer
+                    星区浏览器
                 </A>
             </div>
             <div class={styles.icons}>
