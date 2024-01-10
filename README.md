@@ -2,7 +2,7 @@
 
 DSP Seed Finder is a tool designed to assist you in finding seeds for Dyson Sphere Program.
 
-[Link to DSP Seed Finder](https://doubleuth.github.io/DSP-Seed-Finder/).
+[![deploy gh-pages](https://github.com/Nemo1166/DSP-Seed-Finder/actions/workflows/deployment.yml/badge.svg)](https://github.com/Nemo1166/DSP-Seed-Finder/actions/workflows/deployment.yml)
 
 This tool offers three functions.
 
