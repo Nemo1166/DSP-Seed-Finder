@@ -44,6 +44,7 @@ jobs:
         permissions:
             pages: "write"
             contents: "read"
+            id-token: "write"
         runs-on: ubuntu-20.04
         steps:
             - name: Deploy to GitHub Pages
