@@ -19,14 +19,14 @@ jobs:
             - uses: actions/checkout@v3
               with:
                   ref: zh
-            - uses: pnpm/action-setup@v2
-              with:
-                  version: 8
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "pnpm"
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8
             - name: Install npm dependencies
               run: pnpm install
             - name: install rust pkg
@@ -39,6 +39,13 @@ jobs:
               uses: actions/upload-pages-artifact@v3.0.0
               with:
                   path: ./dist
+    deploy:
+        needs: build
+        permissions:
+            pages: "write"
+            contents: "read"
+        runs-on: ubuntu-20.04
+        steps:
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4.0.2
