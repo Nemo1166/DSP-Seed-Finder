@@ -52,7 +52,7 @@ const Search: Component = () => {
 
     return (
         <form class={styles.search} onSubmit={handleSubmit}>
-            <div class={styles.searchTitle}>Seed:</div>
+            <div class={styles.searchTitle}>种子编号:</div>
             <div class={styles.searchRow}>
                 <NumberInput
                     class={styles.searchInput}
@@ -65,23 +65,23 @@ const Search: Component = () => {
                     kind="outline"
                     onClick={() => setValue(randomSeed())}
                 >
-                    Random
+                    随机
                 </Button>
                 <Button
                     class={styles.searchSubmit}
                     type="submit"
                     disabled={!isValueValid()}
                 >
-                    View
+                    查看
                 </Button>
             </div>
-            <div class={styles.searchTitle}>Star count:</div>
+            <div class={styles.searchTitle}>恒星数量:</div>
             <StarCountSelector
                 class={styles.searchInput}
                 value={store.settings.view.starCount}
                 onChange={(v) => setStore("settings", "view", "starCount", v)}
             />
-            <div class={styles.searchTitle}>Resource Multipler:</div>
+            <div class={styles.searchTitle}>资源倍率:</div>
             <ResourceMultiplierSelector
                 class={styles.searchInput}
                 value={store.settings.view.resourceMultipler}

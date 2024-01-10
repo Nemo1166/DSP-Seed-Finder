@@ -28,7 +28,7 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
         <div class={styles.fields}>
             <div class={styles.field}>
                 <div class={styles.label}>
-                    {props.isLoaded ? "" : "New "}Profile Name
+                    {props.isLoaded ? "" : "New "}配置名称
                 </div>
                 <div class={styles.input}>
                     <Input
@@ -41,7 +41,7 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
             </div>
             <div />
             <div class={styles.field}>
-                <div class={styles.label}>Star count</div>
+                <div class={styles.label}>恒星数量</div>
                 <div class={styles.input}>
                     <StarCountSelector
                         class={styles.inputStandard}
@@ -55,8 +55,8 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
             </div>
             <div class={styles.field}>
                 <div class={styles.label}>
-                    <Tooltip text="To run the search in (faster) native mode, click the download button and run the program on your PC, then enable this option.">
-                        Native Mode
+                    <Tooltip text="要以（更快的）本地模式运行搜索，请单击下载按钮并在电脑上运行程序，然后启用该选项。">
+                        本地模式
                     </Tooltip>
                 </div>
                 <div class={styles.input}>
@@ -66,12 +66,12 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
                         disabled={props.searching}
                     />
                     <a href={ExeUrl} download>
-                        <Button kind="outline">Download</Button>
+                        <Button kind="outline">下载</Button>
                     </a>
                 </div>
             </div>
             <div class={styles.field}>
-                <div class={styles.label}>Resource Multipler</div>
+                <div class={styles.label}>资源倍率</div>
                 <div class={styles.input}>
                     <ResourceMultiplierSelector
                         class={styles.inputStandard}
@@ -85,9 +85,7 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
             </div>
             <div class={styles.field}>
                 <div class={styles.label}>
-                    <Tooltip text="The number of parallel processes to run the search.">
-                        Concurrency
-                    </Tooltip>
+                    <Tooltip text="运行搜索的并行进程数。">线程数</Tooltip>
                 </div>
                 <div class={styles.input}>
                     <NumberInput
@@ -107,7 +105,7 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
                 </div>
             </div>
             <div class={styles.field}>
-                <div class={styles.label}>Seed Range</div>
+                <div class={styles.label}>种子范围</div>
                 <div class={styles.input}>
                     <NumberInput
                         class={styles.inputSeed}
@@ -123,7 +121,7 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
                         }
                         disabled={isDisabled()}
                     />{" "}
-                    to{" "}
+                    到{" "}
                     <NumberInput
                         class={styles.inputSeed}
                         value={props.progress.end - 1}
@@ -142,12 +140,12 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
             </div>
             <div class={styles.field}>
                 <div class={styles.label}>
-                    <Tooltip text="Running autosave too frequently may decrease search performance.">
-                        Autosave interval
+                    <Tooltip text="过于频繁地运行自动保存功能可能会降低搜索性能。">
+                        自动保存间隔
                     </Tooltip>
                 </div>
                 <div class={styles.input}>
-                    Every{" "}
+                    每{" "}
                     <NumberInput
                         class={styles.inputSmall}
                         value={props.progress.autosave}
@@ -158,7 +156,7 @@ function ProgressEditor<E extends ProfileProgressInfo>(props: {
                         error={props.progress.autosave <= 0}
                         disabled={props.searching}
                     />{" "}
-                    seconds
+                    秒
                 </div>
             </div>
         </div>
